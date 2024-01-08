@@ -135,9 +135,9 @@ void FCogAbilityWindow_Abilities::RenderAbiltiesMenu(AActor* Selection)
 
                         if (ImGui::MenuItem(TCHAR_TO_ANSI(*GetNameSafe(AbilityClass))))
                         {
-                            if (ACogAbilityReplicator* Replicator = ACogAbilityReplicator::GetLocalReplicator(*GetWorld()))
+                            if (ACogAbilityReplicator* Replicator = ACogAbilityReplicator::GetFirstReplicator(*GetWorld()))
                             {
-                                Replicator->GiveAbility(Selection, AbilityClass);
+                                Replicator->Server_GiveAbility(Selection, AbilityClass);
                             }
                         }
 
@@ -172,7 +172,7 @@ void FCogAbilityWindow_Abilities::RenderAbiltiesMenu(AActor* Selection)
             ImGui::EndMenu();
         }
 
-        FCogWindowWidgets::MenuSearchBar(Filter);
+        FCogWindowWidgets::SearchBar(Filter);
 
         ImGui::EndMenuBar();
     }
@@ -561,9 +561,9 @@ void FCogAbilityWindow_Abilities::GameTick(float DeltaTime)
     {
         if (AActor* Selection = GetSelection())
         {
-            if (ACogAbilityReplicator* Replicator = ACogAbilityReplicator::GetLocalReplicator(*GetWorld()))
+            if (ACogAbilityReplicator* Replicator = ACogAbilityReplicator::GetFirstReplicator(*GetWorld()))
             {
-                Replicator->RemoveAbility(Selection, AbilityHandleToRemove);
+                Replicator->Server_RemoveAbility(Selection, AbilityHandleToRemove);
             }
         }
 
