@@ -3,6 +3,9 @@
 #include "CoreMinimal.h"
 #include "CogDebugGizmo.generated.h"
 
+class APlayerController;
+class USceneComponent;
+
 //--------------------------------------------------------------------------------------------------------------------------
 UENUM(Flags)
 enum class ECogDebug_GizmoFlags : uint8
@@ -75,9 +78,13 @@ struct FCogDebug_GizmoElement
 //--------------------------------------------------------------------------------------------------------------------------
 struct COGDEBUG_API FCogDebug_Gizmo
 {
+    bool Draw(const char* Id, const APlayerController& InPlayerController, USceneComponent& SceneComponent, ECogDebug_GizmoFlags Flags = ECogDebug_GizmoFlags::None);
+
     bool Draw(const char* Id, const APlayerController& InPlayerController, FTransform& InOutTransform, ECogDebug_GizmoFlags Flags = ECogDebug_GizmoFlags::None);
 
     ECogDebug_GizmoElementType DraggedElementType = ECogDebug_GizmoElementType::MAX;
+
     FVector2D CursorOffset = FVector2D::ZeroVector;
+
     FTransform InitialTransform = FTransform::Identity;
 };
