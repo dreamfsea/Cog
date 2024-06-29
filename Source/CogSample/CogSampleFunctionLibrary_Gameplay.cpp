@@ -154,7 +154,7 @@ FVector UCogSampleFunctionLibrary_Gameplay::GetActorTargetLocation(const AActor*
 
     if (const ICogSampleTargetableInterface* Targetable = Cast<ICogSampleTargetableInterface>(Actor))
     {
-        return Targetable->GetTargetLocation();
+        return Targetable->GetTargetActorLocation();
     }
 
     return Actor->GetActorLocation();
@@ -489,4 +489,16 @@ void UCogSampleFunctionLibrary_Gameplay::MakeOutgoingSpecs(
             Results.Add(EffectClass, EffectSpecHandle);
         }
     }
+}
+
+//--------------------------------------------------------------------------------------------------------------------------
+const UGameplayEffectComponent* UCogSampleFunctionLibrary_Gameplay::GetEffectComponent(const UGameplayEffect* Effect, TSubclassOf<UGameplayEffectComponent> ClassToFind)
+{
+    if (Effect == nullptr)
+    {
+        return nullptr;
+    }
+
+    const UGameplayEffectComponent* EffectComponent = Effect->FindComponent(ClassToFind);
+    return EffectComponent;
 }

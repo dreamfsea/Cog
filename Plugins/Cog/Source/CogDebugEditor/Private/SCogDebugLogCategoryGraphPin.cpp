@@ -1,6 +1,6 @@
 #include "SCogDebugLogCategoryGraphPin.h"
 
-#include "CogDebugLogCategory.h"
+#include "CogCommonLog.h"
 #include "ScopedTransaction.h"
 #include "SCogDebugLogCategoryWidget.h"
 #include "UObject/UObjectIterator.h"
