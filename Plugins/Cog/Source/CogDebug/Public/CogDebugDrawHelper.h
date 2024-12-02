@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/OverlapResult.h"
 #include "Engine/EngineTypes.h"
 
 class AActor;
@@ -9,7 +10,6 @@ class UWorld;
 namespace EDrawDebugTrace { enum Type : int; }
 struct FCollisionShape;
 struct FHitResult;
-struct FOverlapResult;
 
 struct FCogDebugDrawOverlapParams
 {

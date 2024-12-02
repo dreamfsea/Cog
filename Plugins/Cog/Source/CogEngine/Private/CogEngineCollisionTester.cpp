@@ -1,5 +1,6 @@
 #include "CogEngineCollisionTester.h"
 
+#include "Engine/OverlapResult.h"
 #include "CogDebugDrawHelper.h"
 #include "CogDebug.h"
 #include "Components/PrimitiveComponent.h"
